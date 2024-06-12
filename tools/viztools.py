@@ -78,6 +78,20 @@ def plot_heat_map(df, color_val, title=''):
     )
     fig.show()
 
+def plot_line_graph(df, axis_x, axis_y, title=''):
+    """
+    """
+    fig = px.line(
+        df
+        ,x=axis_x
+        ,y=axis_y
+        ,title=title
+        ,template='plotly_dark'
+    )
+    fig.update_yaxes(showgrid=False).update_xaxes(showgrid=False)\
+        .update_traces(textangle=1, selector=dict(type='bar'), textfont_color='white')
+    fig.show()
+
 
 def plot_dualaxis_line_graph(df, axis_x, axis_y:list, title=''):
     """

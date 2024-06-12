@@ -18,19 +18,19 @@ def create_calendar_table(start_date, end_date):
     df = pd.DataFrame({'date': pd.date_range(start_date, end_date)})
     # week
     df['date_weekday'] = df['date'].dt.strftime("%A")
-    df['day_of_week'] = df['date'].apply(lambda x: x.weekday())
-    df['is_weekend'] = df['day_of_week'].apply(lambda x: (x>4) * 1)
+    df['day_of_week'] = df['date'].dt.dayofweek
+    df['is_weekend'] = df['day_of_week'].apply(lambda x: int(x > 4))
     df['abbreviated_weekday'] = df['date'].dt.strftime("%a")
     # month
-    df['month_start'] = df['date'].to_numpy().astype('datetime64[M]')
+    df['month_start'] = df['date'].dt.to_period('M').dt.start_time
     df['month_num'] = df['date'].dt.month
     df['month_year'] = df['date'].dt.strftime("%B %Y")
-    # quater # optional
-    # df['quarter_number'] = df['date'].dt.quarter
-    # df['quarter_text'] = df['date'].apply(lambda x: f'Q{x.quarter} {x.strftime("%Y")}')
-    # # year
-    # df['year_start'] = df['date'].to_numpy().astype('datetime64[Y]')
-    # df['year'] = df['date'].dt.isocalendar().year
+    # quarter
+    df['quarter_number'] = df['date'].dt.quarter
+    df['quarter_text'] = df['date'].dt.to_period('Q').dt.strftime("Q%q %Y")
+    # year
+    df['year_start'] = df['date'].dt.to_period('Y').dt.start_time
+    df['year'] = df['date'].dt.year
     
     return df
 

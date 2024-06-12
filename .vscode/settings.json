@@ -1,0 +1,4 @@
+{
+	"cSpell.words": ["astype", "dayofweek"],
+	"python.analysis.extraPaths": ["./tools"]
+}
