@@ -11,7 +11,8 @@ actionable recommendations to improve the overall performance of the e-commerce
 business.
 
 The result of this project is an annual product summary report and dashboard
-created in Tableau.
+created in Tableau:
+https://public.tableau.com/app/profile/alonaslonkina/viz/ProductAnalytics-eCommerce/AnnualSummarySalesReport
 
 ## Installation
 
